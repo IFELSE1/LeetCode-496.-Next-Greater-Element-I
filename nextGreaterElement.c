@@ -9,16 +9,19 @@ int* nextGreaterElement(int* findNums, int findNumsSize, int* nums, int numsSize
 	int i=0,j=0,k=0;
 	static int returnNums[1000];
 	for (i=0;i<findNumsSize;i++){
+		/*首先找出第一个数组的数在第二个数组中的位置*/
 		for (j=0;j<numsSize;j++){
 			if (findNums[i] == nums[j]) 
 				break;
 		}
+		/*然后搜索此位置的右边是否有比它大的数，有则记下*/
 		for (;j<numsSize;j++){
 			if (nums[j]>findNums[i]){
 				returnNums[i] = nums[j];
 				break;
 			}
 		}
+		/*无则赋值-1*/
 		if (j==numsSize){
 			returnNums[i] = -1;
 		}
